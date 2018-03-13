@@ -86,3 +86,6 @@ Session.vim
 .netrwhist
 *~
 
+.idea/
+.kaggle_simpson_testset/*
+.data/
