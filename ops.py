@@ -67,9 +67,12 @@ def deconv2d(input_, output_shape,
        name="deconv2d", with_w=False):
   with tf.variable_scope(name):
     # filter : [height, width, output_channels, in_channels]
+
     w = tf.get_variable('w', [k_h, k_w, output_shape[-1], input_.get_shape()[-1]],
-              initializer=tf.random_normal_initializer(stddev=stddev))
-    
+                        initializer=tf.random_normal_initializer(stddev=stddev))
+    # w = tf.get_variable('w', [k_h, k_w, output_shape[-1], input_.get_shape()[-1]],
+    #           initializer=tf.contrib.layers.xavier_initializer())
+
     try:
       deconv = tf.nn.conv2d_transpose(input_, w, output_shape=output_shape,
                 strides=[1, d_h, d_w, 1])
@@ -95,7 +98,9 @@ def linear(input_, output_size, scope=None, stddev=0.02, bias_start=0.0, with_w=
 
   with tf.variable_scope(scope or "Linear"):
     matrix = tf.get_variable("Matrix", [shape[1], output_size], tf.float32,
-                 tf.random_normal_initializer(stddev=stddev))
+                             tf.random_normal_initializer(stddev=stddev))
+    # matrix = tf.get_variable("Matrix", [shape[1], output_size], tf.float32,
+    # tf.contrib.layers.xavier_initializer())
     bias = tf.get_variable("bias", [output_size],
       initializer=tf.constant_initializer(bias_start))
     if with_w:
