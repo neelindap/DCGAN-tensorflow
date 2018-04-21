@@ -211,6 +211,7 @@ class DCGAN(object):
     # Start rotation at -90 degrees, end at 90 degrees and produce totally 14 images
     # sample_inputs = perspective_transform(sample_inputs)
 
+    # Add Gaussian Noise
     sample_inputs = add_gaussian_noise(sample_inputs)
     print(sample_inputs.shape)
 

@@ -1,5 +1,4 @@
 # Data
-data
 samples
 *.zip
 logs
@@ -88,4 +87,3 @@ Session.vim
 
 .idea/
 .kaggle_simpson_testset/*
-.data/
