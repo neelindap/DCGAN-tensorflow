@@ -11,6 +11,9 @@ import numpy as np
 from time import gmtime, strftime
 from six.moves import xrange
 
+import cv2
+import os
+
 import tensorflow as tf
 import tensorflow.contrib.slim as slim
 
@@ -177,9 +180,18 @@ def visualize(sess, dcgan, config, option):
     save_images(samples, [image_frame_dim, image_frame_dim], './samples/test_%s.png' % strftime("%Y%m%d%H%M%S", gmtime()))
   elif option == 1:
     values = np.arange(0, 1, 1./config.batch_size)
+    # print(values.shape)
+
+    # filename = os.path.join((os.path.join(os.path.dirname(__file__),'data')), 'sample.png')
+    # print(filename)
+    # img = cv2.imread(filename)
+    # print(img.flatten().shape)
+    # values = img
+
     for idx in xrange(config.generate_test_images):
       print(" [*] %d" % idx)
       z_sample = np.zeros([config.batch_size, dcgan.z_dim])
+      # print(z_sample)
       for kdx, z in enumerate(z_sample):
         z[idx] = values[kdx]
 
