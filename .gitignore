@@ -86,4 +86,4 @@ Session.vim
 *~
 
 .idea/
-.kaggle_simpson_testset/*
+kaggle_simpson_testset/*
